@@ -1,59 +1,296 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Equipment Rental System (Sistem Peminjaman Alat)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Laravel](https://img.shields.io/badge/Laravel-11.x-red)
+![PHP](https://img.shields.io/badge/PHP-8.2+-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-## About Laravel
+Sistem manajemen peminjaman alat laboratorium berbasis web menggunakan Laravel 11. Aplikasi ini memungkinkan mahasiswa untuk meminjam alat laboratorium dengan sistem verifikasi dari petugas.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🌟 Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 👤 Multi-Role System
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   **Admin**: Manajemen user, kategori, dan alat
+-   **Petugas**: Verifikasi peminjaman dan pengembalian
+-   **Peminjam**: Browse, ajukan peminjaman, dan tracking status
 
-## Learning Laravel
+### 🔔 Notification System
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+-   Notifikasi real-time untuk status peminjaman
+-   Notifikasi saat peminjaman disetujui
+-   Notifikasi saat peminjaman ditolak (dengan alasan)
+-   Notifikasi saat pengembalian diproses (dengan info denda)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 📦 Equipment Management
 
-## Laravel Sponsors
+-   CRUD alat dan kategori
+-   Upload gambar alat
+-   Manajemen stok otomatis
+-   Filter dan search alat
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 📋 Borrowing System
 
-### Premium Partners
+-   Form peminjaman dengan kalkulasi otomatis
+-   Verifikasi oleh petugas
+-   Tracking status peminjaman
+-   Sistem denda untuk keterlambatan
+-   History peminjaman
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 🎨 Modern UI/UX
 
-## Contributing
+-   Responsive design
+-   Pastel gradient color scheme
+-   Smooth animations
+-   Clean and intuitive interface
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🚀 Installation
 
-## Code of Conduct
+### Prerequisites
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+-   PHP >= 8.2
+-   Composer
+-   MySQL/MariaDB
+-   Node.js & NPM
 
-## Security Vulnerabilities
+### Steps
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. **Clone Repository**
 
-## License
+```bash
+git clone https://github.com/Super4zer/equipment_rental.git
+cd equipment_rental
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+2. **Install Dependencies**
+
+```bash
+composer install
+npm install
+```
+
+3. **Environment Setup**
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+4. **Database Configuration**
+
+Edit `.env` file:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=peminjaman_alat
+DB_USERNAME=root
+DB_PASSWORD=your_password
+```
+
+5. **Run Migrations & Seeders**
+
+```bash
+php artisan migrate
+php artisan db:seed
+```
+
+6. **Storage Link**
+
+```bash
+php artisan storage:link
+```
+
+7. **Build Assets**
+
+```bash
+npm run build
+# or for development
+npm run dev
+```
+
+8. **Run Application**
+
+```bash
+php artisan serve
+```
+
+Access: `http://localhost:8000`
+
+## 👥 Default Accounts
+
+| Role     | Email           | Password |
+| -------- | --------------- | -------- |
+| Admin    | admin@app.com   | password |
+| Petugas  | petugas@app.com | password |
+| Peminjam | user@app.com    | password |
+
+## 📱 Usage
+
+### For Borrowers (Peminjam)
+
+1. **Login** with `user@app.com`
+2. **Browse** available equipment at `/peminjam/browse`
+3. **Search & Filter** equipment by name or category
+4. **View Details** by clicking on equipment card
+5. **Submit Borrowing Request** with dates and quantity
+6. **Track Status** at `/peminjam/my-bookings`
+7. **Check Notifications** at `/peminjam/notifications`
+
+### For Staff (Petugas)
+
+1. **Login** with `petugas@app.com`
+2. **Verify Requests** at `/verifikasi`
+    - Approve or reject borrowing requests
+    - Add notes if rejecting
+3. **Process Returns** at `/pengembalian`
+    - Mark equipment as returned
+    - Add late fees if applicable
+
+### For Admin
+
+1. **Login** with `admin@app.com`
+2. **Manage Users** at `/users`
+3. **Manage Categories** at `/kategori`
+4. **Manage Equipment** at `/alat`
+    - Add new equipment
+    - Update stock
+    - Upload images
+
+## 🗂️ Project Structure
+
+```
+equipment_rental/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── AlatController.php
+│   │   │   ├── AuthController.php
+│   │   │   ├── DashboardController.php
+│   │   │   ├── KategoriController.php
+│   │   │   ├── PeminjamController.php
+│   │   │   ├── PeminjamanController.php
+│   │   │   └── UserController.php
+│   │   └── Middleware/
+│   │       └── CheckRole.php
+│   └── Models/
+│       ├── Alat.php
+│       ├── Kategori.php
+│       ├── Notification.php
+│       ├── Peminjaman.php
+│       └── User.php
+├── database/
+│   ├── migrations/
+│   └── seeders/
+├── resources/
+│   └── views/
+│       ├── admin/
+│       ├── petugas/
+│       └── peminjam/
+└── routes/
+    └── web.php
+```
+
+## 🔐 Security Features
+
+-   Authentication & Authorization
+-   Role-based Access Control (RBAC)
+-   CSRF Protection
+-   Password Hashing
+-   SQL Injection Prevention
+-   XSS Protection
+
+## 📊 Database Schema
+
+### Users
+
+-   id, name, email, password, role, no_telp, alamat
+
+### Kategoris
+
+-   id, nama_kategori
+
+### Alats
+
+-   id, kategori_id, nama_alat, deskripsi, stok, harga_sewa_per_hari, gambar
+
+### Peminjamans
+
+-   id, user_id, alat_id, tanggal_pinjam, tanggal_kembali, tanggal_dikembalikan, status, jumlah, total_biaya, catatan, denda, catatan_petugas
+
+### Notifications
+
+-   id, user_id, peminjaman_id, type, title, message, is_read
+
+## 🛠️ Tech Stack
+
+-   **Backend**: Laravel 11
+-   **Frontend**: Blade Templates, Tailwind CSS
+-   **Database**: MySQL
+-   **Authentication**: Laravel Auth
+-   **Build Tool**: Vite
+
+## 📚 Documentation
+
+-   [Notification System Documentation](DOKUMENTASI_NOTIFIKASI.md)
+-   [Seeder Documentation](DOKUMENTASI_SEEDER.md)
+-   [Peminjam Features Guide](PERBAIKAN_FITUR_PEMINJAM.md)
+-   [Testing Guide](TESTING_GUIDE_PEMINJAM.md)
+-   [Troubleshooting](TROUBLESHOOTING_NOTIFIKASI.md)
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+1. **Table not found error**
+
+```bash
+php artisan migrate
+php artisan optimize:clear
+```
+
+2. **Seeder duplicate entry**
+
+```bash
+# Seeder is now idempotent, safe to run multiple times
+php artisan db:seed
+```
+
+3. **Assets not loading**
+
+```bash
+npm run build
+php artisan storage:link
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+## 👨‍💻 Author
+
+**Super4zer**
+
+-   GitHub: [@Super4zer](https://github.com/Super4zer)
+
+## 🙏 Acknowledgments
+
+-   Laravel Framework
+-   Tailwind CSS
+-   All contributors
+
+## 📞 Support
+
+For support, email your-email@example.com or open an issue in this repository.
+
+---
+
+Made with ❤️ using Laravel
